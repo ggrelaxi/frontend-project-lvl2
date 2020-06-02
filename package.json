@@ -4,6 +4,9 @@
   "description": "initialize repo",
   "type": "module",
   "main": "index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,8 +21,9 @@
   },
   "homepage": "https://github.com/ggrelaxi/frontend-project-lvl2#readme",
   "devDependencies": {
-    "eslint": "^7.0.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2"
   },
   "dependencies": {
