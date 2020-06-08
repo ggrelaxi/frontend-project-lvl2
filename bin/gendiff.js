@@ -2,8 +2,6 @@
 
 import commander from 'commander';
 
-import path from 'path';
-
 import gendiff from '../index.js';
 
 commander
