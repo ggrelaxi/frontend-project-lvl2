@@ -2,15 +2,15 @@
 
 import commander from 'commander';
 
+import path from 'path';
+
+import gendiff from '../index.js';
+
 commander
   .version('0.0.1')
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'output format');
-
-// Commands
-
-commander
-  .arguments('<path1> <path2>')
-  .action(() => {});
+  .option('-f, --format [type]', 'output format')
+  .arguments('<filepath1> <filepath2>')
+  .action((filepath1, filepath2) => gendiff(filepath1, filepath2));
 
 commander.parse(process.argv);
