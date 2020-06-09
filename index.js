@@ -8,17 +8,18 @@ import fs from 'fs';
 
 const compareValues = (obj1, obj2, key) => {
   let str = '';
+  const space = ' ';
   if (obj1[key] === obj2[key]) {
-    str = `  ${key}: ${obj1[key]}\n`;
+    str = `    ${key}: ${obj1[key]}\n`;
   }
   if (obj1[key] !== obj2[key]) {
-    str = `+ ${key}: ${obj1[key]}\n+ ${key}: ${obj2[key]}\n`;
+    str = ` - ${key}: ${obj1[key]}\n ${space}+ ${key}: ${obj2[key]}\n`;
   }
   if (!obj1[key]) {
-    str = `+ ${key}: ${obj2[key]}\n`;
+    str = ` + ${key}: ${obj2[key]}\n`;
   }
   if (!obj2[key]) {
-    str = `- ${key}: ${obj1[key]}\n`;
+    str = ` - ${key}: ${obj1[key]}\n`;
   }
   return str;
 };
@@ -34,7 +35,9 @@ const gendiff = (firstPath, secondPath) => {
     acc.push(resultStr);
     return acc;
   }, []);
-  return console.log(`{\n${result.join('')}}`);
+  const str = (`\n{\n${result.join(' ')}}`);
+  console.log(str);
+  return str;
 };
 
 export default gendiff;
