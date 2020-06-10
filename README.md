@@ -15,4 +15,4 @@ $ gendiff firstFilePath.json secondFilePath.json
 ```sh
 $ gendiff firstFilePath.yml secondFilePath.yml
 ```
-[![asciicast]https://asciinema.org/a/337988.png)](https://asciinema.org/a/337988)
+[![asciicast](https://asciinema.org/a/337988.png)](https://asciinema.org/a/337988)

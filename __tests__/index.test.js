@@ -17,3 +17,10 @@ test('gendiffYml', () => {
   const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
+
+test('gendiffIni', () => {
+  const firstPath = 'before.ini';
+  const secondPath = 'after.ini';
+  const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
+  expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
+});
