@@ -6,13 +6,19 @@
 
 ## Get differents from two JSON files (use relative or absolute paths)
 ```sh
-$ gendiff firstFilePath.json secondFilePath.json
+$ gendiff <firstFilePath>.json <secondFilePath>.json
 ```
 [![asciicast](https://asciinema.org/a/337517.png)](https://asciinema.org/a/337517)
 
 
 ## Get differents from two YAML files (use relative or absolute paths)
 ```sh
-$ gendiff firstFilePath.yml secondFilePath.yml
+$ gendiff <firstFilePath>.yml <secondFilePath>.yml
 ```
 [![asciicast](https://asciinema.org/a/337988.png)](https://asciinema.org/a/337988)
+
+## Get differents from two INI files (use relative or absolute paths)
+```sh
+$ gendiff <firstFilePath>.yml <secondFilePath>.yml
+```
+[![asciicast](https://asciinema.org/a/338023.png)](https://asciinema.org/a/338023)
