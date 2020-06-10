@@ -5,22 +5,22 @@ import fs from 'fs';
 import gendiff from '../index.js';
 
 test('gendiffJson', () => {
-  const firstPath = 'before.json';
-  const secondPath = 'after.json';
+  const firstPath = './__tests__/fixtures/before.json';
+  const secondPath = './__tests__/fixtures/after.json';
   const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
 
 test('gendiffYml', () => {
-  const firstPath = 'before.yml';
-  const secondPath = 'after.yml';
+  const firstPath = './__tests__/fixtures/before.yml';
+  const secondPath = './__tests__/fixtures/after.yml';
   const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
 
 test('gendiffIni', () => {
-  const firstPath = 'before.ini';
-  const secondPath = 'after.ini';
+  const firstPath = './__tests__/fixtures/before.ini';
+  const secondPath = './__tests__/fixtures/after.ini';
   const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
