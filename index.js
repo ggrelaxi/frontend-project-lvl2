@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import path from 'path';
 
-import fs from 'fs';
+import getParsedContent from './parsers/parsers.js';
 
 // [host, timeout, proxy, follow, verbose]
 
@@ -27,8 +27,8 @@ const compareValues = (obj1, obj2, key) => {
 const gendiff = (firstPath, secondPath) => {
   const firstFilePath = path.resolve(firstPath);
   const secondFilePath = path.resolve(secondPath);
-  const obj1 = JSON.parse(fs.readFileSync(firstFilePath).toString());
-  const obj2 = JSON.parse(fs.readFileSync(secondFilePath).toString());
+  const obj1 = getParsedContent(firstFilePath);
+  const obj2 = getParsedContent(secondFilePath);
   const keys = _.union(Object.keys(obj1), Object.keys(obj2));
   const result = keys.reduce((acc, key) => {
     const resultStr = compareValues(obj1, obj2, key);
