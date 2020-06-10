@@ -2,15 +2,4 @@ node_modules/
 
 *~
 
-before.json
-after.json
-
-before.yml
-after.yml
-
-before.ini
-after.ini
-
 coverage/
-
-
