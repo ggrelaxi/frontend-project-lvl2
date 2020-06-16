@@ -4,7 +4,7 @@ import path from 'path';
 
 import getParsedContent from './parsers/parsers.js';
 
-import stylish from './stylish.js';
+import getFormatter from './formatters/index.js';
 
 // [host, timeout, proxy, follow, verbose]
 
@@ -35,14 +35,13 @@ const compareValues = (obj1, obj2) => {
   return node;
 };
 
-const gendiff = (firstPath, secondPath) => {
+const gendiff = (firstPath, secondPath, format) => {
   const firstFilePath = path.resolve(firstPath);
   const secondFilePath = path.resolve(secondPath);
   const obj1 = getParsedContent(firstFilePath);
   const obj2 = getParsedContent(secondFilePath);
   const result = compareValues(obj1, obj2);
-  const resultStr = stylish(result);
-  console.log(resultStr);
+  const resultStr = getFormatter(result, format);
   return resultStr;
 };
 

@@ -5,29 +5,29 @@ import fs from 'fs';
 import gendiff from '../index.js';
 
 test('gendiffJson', () => {
-  const firstPath = './__tests__/fixtures/before.json';
-  const secondPath = './__tests__/fixtures/after.json';
-  const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
+  const firstPath = './fixtures/before.json';
+  const secondPath = './fixtures/after.json';
+  const correctResult = fs.readFileSync('./fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
 
 test('gendiffYml', () => {
-  const firstPath = './__tests__/fixtures/before.yml';
-  const secondPath = './__tests__/fixtures/after.yml';
-  const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
+  const firstPath = './fixtures/before.yml';
+  const secondPath = './fixtures/after.yml';
+  const correctResult = fs.readFileSync('./fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
 
 test('gendiffIni', () => {
-  const firstPath = './__tests__/fixtures/before.ini';
-  const secondPath = './__tests__/fixtures/after.ini';
-  const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
+  const firstPath = './fixtures/before.ini';
+  const secondPath = './fixtures/after.ini';
+  const correctResult = fs.readFileSync('./fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
 
 test('gendiiffTree', () => {
-  const firstPath = './__tests__/fixtures/beforeTree.json';
-  const secondPath = './__tests__/fixtures/afterTree.json';
-  const correctResult = fs.readFileSync('./__tests__/fixtures/resultTreeDifferent');
+  const firstPath = './fixtures/beforeTree.json';
+  const secondPath = './fixtures/afterTree.json';
+  const correctResult = fs.readFileSync('./fixtures/resultTreeDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
