@@ -32,6 +32,6 @@ $ gendiff <firstFilePath> <secondFilePath>
 
 ## Get differents from two files with nested structure. Output on plain format
 ```sh
-$ gendiff <firstFilePath> <secondFilePath>
+$ gendiff --format plain <firstFilePath> <secondFilePath>
 ```
 [![asciicast](https://asciinema.org/a/340158.png)](https://asciinema.org/a/340158)
