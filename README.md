@@ -22,3 +22,10 @@ $ gendiff <firstFilePath>.yml <secondFilePath>.yml
 $ gendiff <firstFilePath>.yml <secondFilePath>.yml
 ```
 [![asciicast](https://asciinema.org/a/338023.png)](https://asciinema.org/a/338023)
+
+
+## Get differents from two files with nested structure (use relative or absolute paths)
+```sh
+$ gendiff <firstFilePath> <secondFilePath>
+```
+[![asciicast](https://asciinema.org/a/340090.png)](https://asciinema.org/a/340090)
