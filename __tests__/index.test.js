@@ -24,3 +24,10 @@ test('gendiffIni', () => {
   const correctResult = fs.readFileSync('./__tests__/fixtures/resultDifferent');
   expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
 });
+
+test('gendiiffTree', () => {
+  const firstPath = './__tests__/fixtures/beforeTree.json';
+  const secondPath = './__tests__/fixtures/afterTree.json';
+  const correctResult = fs.readFileSync('./__tests__/fixtures/resultTreeDifferent');
+  expect(gendiff(firstPath, secondPath)).toEqual(correctResult.toString());
+});
