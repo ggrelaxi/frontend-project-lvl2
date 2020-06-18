@@ -9,13 +9,14 @@ commander
   .description('Compares two configuration files and shows a difference.');
 
 commander
-  .option('-f, --format [type]', 'output format', 'json');
+  .option('-f, --format [type]', 'output format', 'tree');
 
 commander
   .arguments('<filepath1> <filepath2>');
 
 commander
   .action((filepath1, filepath2) => {
+    console.log(commander.format);
     const diff = gendiff(filepath1, filepath2, commander.format);
     console.log(diff);
   });

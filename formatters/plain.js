@@ -28,9 +28,8 @@ const plain = (content, fullPath = '') => {
     const children = plain(node.children, path);
     return children;
   };
-
-  const tree = content.flatMap((node) => iter(node, fullPath));
-  return tree
+  return content
+    .flatMap((node) => iter(node, fullPath))
     .filter((string) => string)
     .join('\n');
 };

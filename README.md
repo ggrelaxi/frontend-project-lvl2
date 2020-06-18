@@ -35,3 +35,9 @@ $ gendiff <firstFilePath> <secondFilePath>
 $ gendiff --format plain <firstFilePath> <secondFilePath>
 ```
 [![asciicast](https://asciinema.org/a/340158.png)](https://asciinema.org/a/340158)
+
+## Get differents from two files with nested structure. Output on JSON format
+```sh
+$ gendiff --format plain <firstFilePath> <secondFilePath>
+```
+[![asciicast](https://asciinema.org/a/341023.png)](https://asciinema.org/a/341023)

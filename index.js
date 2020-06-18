@@ -35,7 +35,7 @@ const compareValues = (obj1, obj2) => {
   return node;
 };
 
-const gendiff = (firstPath, secondPath, format) => {
+const gendiff = (firstPath, secondPath, format = 'tree') => {
   const firstFilePath = path.resolve(firstPath);
   const secondFilePath = path.resolve(secondPath);
   const obj1 = getParsedContent(firstFilePath);
