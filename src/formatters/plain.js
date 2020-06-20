@@ -1,7 +1,5 @@
-import _ from 'lodash';
-
 const formatValue = (value) => {
-  if (_.isPlainObject(value)) {
+  if (typeof value === 'object') {
     return '[complex value]';
   }
   if (typeof value === 'string') {
@@ -10,7 +8,7 @@ const formatValue = (value) => {
   return `${value}`;
 };
 
-const plain = (content, fullPath = '') => {
+const renderPlain = (content, fullPath = '') => {
   const iter = (node, ancestry) => {
     const path = ancestry.length > 0 ? `${ancestry}.${node.key}` : node.key;
     if (node.state === 'added') {
@@ -25,7 +23,7 @@ const plain = (content, fullPath = '') => {
     if (node.state === 'unchange') {
       return '';
     }
-    const children = plain(node.children, path);
+    const children = renderPlain(node.children, path);
     return children;
   };
   return content
@@ -34,4 +32,4 @@ const plain = (content, fullPath = '') => {
     .join('\n');
 };
 
-export default plain;
+export default renderPlain;

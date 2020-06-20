@@ -6,25 +6,36 @@ const makeIndent = (depth, marker) => {
   return marker === undefined ? actualIndent : `${actualIndent.slice(2)}${marker} `;
 };
 
-const braces = (content, depth) => {
-  const bracesIndent = makeIndent(depth - 1);
-  return `{\n${content}\n${bracesIndent}}`;
+// const braces = (content, depth) => {
+//   const bracesIndent = makeIndent(depth - 1);
+//   return `{\n${content}\n${bracesIndent}}`;
+// };
+
+// const formatObject = (object, depth) => {
+//   const objectIndent = makeIndent(depth + 1);
+//   const objectContent = Object.entries(object)
+//     .map(([key, value]) => `${objectIndent}${key}: ${value}`)
+//     .join('\n');
+//   return braces(objectContent, depth + 1);
+// };
+
+// const formatValue = (value, indentCount) => {
+//   const singleValue = _.isPlainObject(value) ? formatObject(value, indentCount) : `${value}`;
+//   return singleValue;
+// };
+
+const formatValue = (values, depth) => {
+  if (_.isObject(values)) {
+    const objectIndent = makeIndent(depth + 1);
+    const objectContent = Object.entries(values)
+      .map(([key, value]) => `${objectIndent}${key}: ${value}`)
+      .join('\n');
+    return `{\n${objectContent}\n${makeIndent(depth)}}`;
+  }
+  return `${values}`;
 };
 
-const formatObject = (object, depth) => {
-  const objectIndent = makeIndent(depth + 1);
-  const objectContent = Object.entries(object)
-    .map(([key, value]) => `${objectIndent}${key}: ${value}`)
-    .join('\n');
-  return braces(objectContent, depth + 1);
-};
-
-const formatValue = (value, indentCount) => {
-  const singleValue = _.isPlainObject(value) ? formatObject(value, indentCount) : `${value}`;
-  return singleValue;
-};
-
-const stylish = (content, depth = 1) => {
+const renderStylish = (content, depth = 1) => {
   const iter = (node) => {
     if (node.state === 'added') {
       const indent = makeIndent(depth, '+');
@@ -52,11 +63,11 @@ const stylish = (content, depth = 1) => {
       ];
     }
     const indent = makeIndent(depth);
-    const children = stylish(node.children, depth + 1);
+    const children = renderStylish(node.children, depth + 1);
     return `${indent}${node.key}: ${children}`;
   };
   const tree = content.flatMap((node) => iter(node)).join('\n');
-  return braces(tree, depth);
+  return `{\n${tree}\n${makeIndent(depth - 1)}}`;
 };
 
-export default stylish;
+export default renderStylish;

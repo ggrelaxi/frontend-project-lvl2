@@ -1,17 +1,16 @@
 import stylish from './stylish.js';
-
 import plain from './plain.js';
 
 const formatter = (result, format) => {
   switch (format) {
-    case 'tree':
+    case 'stylish':
       return stylish(result);
     case 'plain':
       return plain(result);
     case 'json':
-      return JSON.stringify(stylish(result));
+      return JSON.stringify(result);
     default:
-      return 'incorrect format';
+      throw Error('incorrect format');
   }
 };
 
