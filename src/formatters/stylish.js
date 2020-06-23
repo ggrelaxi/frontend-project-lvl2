@@ -1,28 +1,10 @@
 import _ from 'lodash';
 
-const makeIndent = (depth, marker) => {
+const makeIndent = (depth, marker = null) => {
   const indentStep = 4;
   const actualIndent = ' '.repeat(depth * indentStep);
-  return marker === undefined ? actualIndent : `${actualIndent.slice(2)}${marker} `;
+  return marker === null ? actualIndent : `${actualIndent.slice(2)}${marker} `;
 };
-
-// const braces = (content, depth) => {
-//   const bracesIndent = makeIndent(depth - 1);
-//   return `{\n${content}\n${bracesIndent}}`;
-// };
-
-// const formatObject = (object, depth) => {
-//   const objectIndent = makeIndent(depth + 1);
-//   const objectContent = Object.entries(object)
-//     .map(([key, value]) => `${objectIndent}${key}: ${value}`)
-//     .join('\n');
-//   return braces(objectContent, depth + 1);
-// };
-
-// const formatValue = (value, indentCount) => {
-//   const singleValue = _.isPlainObject(value) ? formatObject(value, indentCount) : `${value}`;
-//   return singleValue;
-// };
 
 const formatValue = (values, depth) => {
   if (_.isObject(values)) {
@@ -63,8 +45,8 @@ const renderStylish = (content, depth = 1) => {
       ];
     }
     const indent = makeIndent(depth);
-    const children = renderStylish(node.children, depth + 1);
-    return `${indent}${node.key}: ${children}`;
+    const innerTree = renderStylish(node.children, depth + 1);
+    return `${indent}${node.key}: ${innerTree}`;
   };
   const tree = content.flatMap((node) => iter(node)).join('\n');
   return `{\n${tree}\n${makeIndent(depth - 1)}}`;

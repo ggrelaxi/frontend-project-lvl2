@@ -1,10 +1,10 @@
 {
     "env": {
-        "browser": true,
         "es6": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:jest/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
