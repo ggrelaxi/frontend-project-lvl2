@@ -29,12 +29,12 @@ const renderStylish = (content, depth = 1) => {
       const value = formatValue(node.value, depth);
       return `${indent}${node.key}: ${value}`;
     }
-    if (node.state === 'unchange') {
+    if (node.state === 'unchanged') {
       const indent = makeIndent(depth);
       const value = formatValue(node.value, depth);
       return `${indent}${node.key}: ${value}`;
     }
-    if (node.state === 'change') {
+    if (node.state === 'changed') {
       const deleteIndent = makeIndent(depth, '-');
       const addedIndent = makeIndent(depth, '+');
       const newValue = formatValue(node.newValue, depth);

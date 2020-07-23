@@ -11,15 +11,15 @@ const buildDiff = (obj1, obj2) => {
     }
 
     if (obj1[key] === obj2[key]) {
-      return { key, state: 'unchange', value: obj2[key] };
+      return { key, state: 'unchanged', value: obj2[key] };
     }
     if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
       const children = buildDiff(obj1[key], obj2[key]);
-      return { key, state: 'haveChildren', children };
+      return { key, state: 'nested', children };
     }
     return {
       key,
-      state: 'change',
+      state: 'changed',
       oldValue: obj1[key],
       newValue: obj2[key],
     };
