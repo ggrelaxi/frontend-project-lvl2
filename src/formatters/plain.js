@@ -32,28 +32,3 @@ const renderPlain = (content) => {
 };
 
 export default renderPlain;
-
-// const renderPlain = (content, fullPath = '') => {
-//   const iter = (node, ancestry) => {
-//     const path = ancestry.length > 0 ? `${ancestry}.${node.key}` : node.key;
-
-//     if (node.state === 'added') {
-//       return `Property '${path}' was added with value: ${formatValue(node.value)}`;
-//     }
-//     if (node.state === 'deleted') {
-//       return `Property '${path}' was deleted`;
-//     }
-//     if (node.state === 'changed') {
-//       return `Property '${path}' was changed from ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`;
-//     }
-//     if (node.state === 'unchanged') {
-//       return '';
-//     }
-//     const children = renderPlain(node.children, path);
-//     return children;
-//   };
-//   return content
-//     .flatMap((node) => iter(node, fullPath))
-//     .filter((string) => string)
-//     .join('\n');
-// };
