@@ -6,9 +6,9 @@ let resultPlain;
 let resultJson;
 
 beforeAll(() => {
-  resultStylish = fs.readFileSync('./fixtures/resultStylish');
-  resultPlain = fs.readFileSync('./fixtures/resultPlain');
-  resultJson = fs.readFileSync('./fixtures/resultJson');
+  resultStylish = fs.readFileSync('./__fixtures__/resultStylish');
+  resultPlain = fs.readFileSync('./__fixtures__/resultPlain');
+  resultJson = fs.readFileSync('./__fixtures__/resultJson');
 });
 
 describe('get different from two files', () => {
@@ -18,8 +18,8 @@ describe('get different from two files', () => {
     ['json'],
 
   ])('files format - %p', (extension) => {
-    const beforeFullPath = `${process.cwd()}/fixtures/before.${extension}`;
-    const afterFullPath = `${process.cwd()}/fixtures/after.${extension}`;
+    const beforeFullPath = `${process.cwd()}/__fixtures__/before.${extension}`;
+    const afterFullPath = `${process.cwd()}/__fixtures__/after.${extension}`;
     expect(gendiff(beforeFullPath, afterFullPath, 'stylish')).toEqual(resultStylish.toString());
     expect(gendiff(beforeFullPath, afterFullPath, 'plain')).toEqual(resultPlain.toString());
     expect(gendiff(beforeFullPath, afterFullPath, 'json')).toEqual(resultJson.toString());
