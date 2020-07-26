@@ -21,7 +21,9 @@
       + baz: bars
         foo: bar
       - nest: {
-            key: value
+            key1: {
+                key: value
+            }
         }
       + nest: str
     }

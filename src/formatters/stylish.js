@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const makeIndent = (depth, marker = null) => {
+const makeIndent = (depth = 0, marker = null) => {
   const indentStep = 4;
   const actualIndent = ' '.repeat(depth * indentStep);
   return marker === null ? actualIndent : `${actualIndent.slice(2)}${marker} `;
@@ -10,7 +10,7 @@ const formatValue = (values, depth) => {
   if (_.isObject(values)) {
     const objectIndent = makeIndent(depth + 1);
     const objectContent = Object.entries(values)
-      .map(([key, value]) => `${objectIndent}${key}: ${value}`)
+      .map(([key, value]) => `${objectIndent}${key}: ${formatValue(value, depth + 1)}`)
       .join('\n');
     return `{\n${objectContent}\n${makeIndent(depth)}}`;
   }
@@ -34,7 +34,7 @@ const renderStylish = (content) => {
       const formattedValue = formatValue(node.value, depth);
       return `${indent}${node.key}: ${formattedValue}`;
     }
-    if (node.state === 'change') {
+    if (node.state === 'changed') {
       const deleteIndent = makeIndent(depth, '-');
       const addedIndent = makeIndent(depth, '+');
       const formattedNewValue = formatValue(node.newValue, depth);
@@ -44,13 +44,12 @@ const renderStylish = (content) => {
         `${addedIndent}${node.key}: ${formattedNewValue}`,
       ];
     }
-    console.log(node.children)
-    return node.children.flatMap((children) => iter(children, depth + 1));
-    // const innerTree = iter(node.children, depth + 1);
-    // return `${indent}${node.key}: ${innerTree}`;
+    const indent = makeIndent(depth);
+    const innerTree = node.children.flatMap((children) => iter(children, depth + 1)).join('\n');
+    return `${indent}${node.key}: {\n${innerTree}\n${indent}}`;
   };
   const tree = content.flatMap((node) => iter(node, 1)).join('\n');
-  return `{\n${tree}\n${makeIndent(1)}}`;
+  return `{\n${tree}\n${makeIndent()}}`;
 };
 
 export default renderStylish;
