@@ -10,7 +10,7 @@ const formatter = (result, format) => {
     case 'json':
       return JSON.stringify(result);
     default:
-      throw Error('incorrect format');
+      throw Error(`incorrect format "${format}"`);
   }
 };
 
